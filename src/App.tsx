@@ -70,7 +70,7 @@ export function App() {
         camera={{ position: [-40, 40, 40], fov: 25 }}
       >
         <PointerEvents />
-        <OrbitControls />
+        {/* <OrbitControls /> */}
         <XR store={store}>
           <color attach="background" args={['#fff']} />
           <Environment preset='city'/>
