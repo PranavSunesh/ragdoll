@@ -75,7 +75,7 @@ export function App() {
           <color attach="background" args={['#fff']} />
           <Environment preset='city'/>
           <Suspense>
-            <Physics allowSleep={false} iterations={15} gravity={[0, -9.8, 0]}>
+            <Physics allowSleep={false} iterations={15} gravity={[0, -200, 0]}>
               <Cursor />
               <Floor />
               <AntiRollBar />
