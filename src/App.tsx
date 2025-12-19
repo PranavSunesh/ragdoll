@@ -1,6 +1,6 @@
 
 import { Canvas } from '@react-three/fiber'
-import { Environment, OrbitControls } from '@react-three/drei'
+import { Environment } from '@react-three/drei'
 import { Physics, usePlane } from '@react-three/cannon'
 import { createXRStore, noEvents, useXRControllerLocomotion, XR, XROrigin, PointerEvents } from '@react-three/xr'
 import { useRef, Suspense } from 'react'
