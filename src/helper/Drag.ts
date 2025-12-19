@@ -30,16 +30,20 @@ export function useDragConstraint(child: RefObject<Object3D | null>): DragConstr
   }, [api])
   
   const onPointerUp = useCallback((e: ThreeEvent<PointerEvent>) => {
-    console.log('PointerUp fired', { grabbingPointerId, eventPointerId: e.pointerId })
     if (grabbingPointerId == null) {
       return
     }
     grabbingPointerId = undefined
     document.body.style.cursor = 'grab'
-    const target = (e.nativeEvent?.target || e.target) as Element
-    if (target && 'releasePointerCapture' in target) {
-      target.releasePointerCapture(e.pointerId)
+    
+    try {
+      const target = (e.nativeEvent?.target || e.target) as Element
+      if (target && 'releasePointerCapture' in target) {
+        target.releasePointerCapture(e.pointerId)
+      }
+    } catch (err) {
     }
+    
     api.disable()
   }, [api])
   
@@ -51,10 +55,15 @@ export function useDragConstraint(child: RefObject<Object3D | null>): DragConstr
     grabbedPosition.copy(e.point)
     document.body.style.cursor = 'grabbing'
     e.stopPropagation()
-    const target = (e.nativeEvent?.target || e.target) as Element
-    if (target && 'setPointerCapture' in target) {
-      target.setPointerCapture(e.pointerId)
+    
+    try {
+      const target = (e.nativeEvent?.target || e.target) as Element
+      if (target && 'setPointerCapture' in target) {
+        target.setPointerCapture(e.pointerId)
+      }
+    } catch (err) {
     }
+    
     api.enable()
   }, [api])
   
