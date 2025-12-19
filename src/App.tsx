@@ -1,6 +1,6 @@
 
 import { Canvas } from '@react-three/fiber'
-import { Environment } from '@react-three/drei'
+import { Environment, OrbitControls } from '@react-three/drei'
 import { Physics, usePlane } from '@react-three/cannon'
 import { createXRStore, noEvents, useXRControllerLocomotion, XR, XROrigin, PointerEvents } from '@react-three/xr'
 import { useRef, Suspense } from 'react'
@@ -63,14 +63,14 @@ export function App() {
           width: "100vw",
           height: "100vh"
         }}
-        onPointerMissed={() => console.log('missed')}
+        onPointerMissed={() =>  console.log('missed')}
         dpr={[1, 2]}
         shadows
         events={noEvents}
         camera={{ position: [-40, 40, 40], fov: 25 }}
       >
         <PointerEvents />
-        {/* <OrbitControls /> */}
+        <OrbitControls />
         <XR store={store}>
           <color attach="background" args={['#fff']} />
           <Environment preset='city'/>
